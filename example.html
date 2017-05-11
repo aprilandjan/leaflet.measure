@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>leaflet.measure example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
+    <link rel="stylesheet" href="./leaflet.measure.css"/>
+    <script src="./leaflet.measure.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body, #elMap {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="elMap"></div>
+    <script>
+      var map = L.map('elMap').setView([22.536836, 113.951513], 13);
+      L.tileLayer('http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+        maxZoom: 15,
+        minZoom: 5,
+        subdomains: ['1', '2', '3', '4']
+      }).addTo(map)
+
+      L.control.measure({
+        //  control position
+        position: 'topleft',
+        //  weather to use keyboard control for this plugin
+        keyboard: true,
+        //  shortcut to activate measure
+        activeKeyCode: 'M'.charCodeAt(0),
+        //  shortcut to cancel measure, defaults to 'Esc'
+        cancelKeyCode: 27,
+        //  line color
+        lineColor: 'red',
+        //  line weight
+        lineWeight: 2,
+        //  line dash
+        lineDashArray: '6, 6',
+        //  line opacity
+        lineOpacity: 1
+      }).addTo(map)
+    </script>
+  </body>
+</html>
