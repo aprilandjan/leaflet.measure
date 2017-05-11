@@ -4,7 +4,7 @@
 
 ## Example
 
-You can check the [example](http://jtreml.github.com/leaflet.measure/example.html) here.
+You can check the [example](http://aprilandjan.github.com/leaflet.measure/example.html) here.
 
 ## Usage
 
