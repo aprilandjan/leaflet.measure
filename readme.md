@@ -36,17 +36,18 @@ L.control.measure({
 
 | option | default | description |
 | ------| ------ | ------ |
-| position | 'topleft' | Option from L.Control |
-| keyboard | true | Weather to use keyboard control for this plugin. If set to true, you can use the defined key to toggle measuring |
-| activeKeyCode | 77 | The key code to active measuring. 77 is the keyCode of 'M' |
-| cancelKeyCode | 27 | The key code to cancel measuring. 27 is the keyCode of 'ESC' |
-| lineColor | 'black' | The color of measuring line. Option from L.Polyline |
-| lineWeight | 2 | The weight(width) of measuring line. Option from L.Polyline |
-| lineDashArray | '6, 6' | The dash array of measuring line. Option from L.Polyline |
-| lineOpacity | 1 | The opacity of measuring line. Option from L.Polyline |
+| position | 'topleft' | Option from `L.Control` |
+| keyboard | true | Whether to use keyboard control for this plugin. If set to true, you can use the defined key to toggle measuring |
+| activeKeyCode | 77 | The key code to active measuring. 77 is the key code of <kbd>M</kbd> |
+| cancelKeyCode | 27 | The key code to cancel measuring. 27 is the key code of <kbd>ESC</kdb> |
+| lineColor | 'black' | The color of measuring line. Option from `L.Polyline` |
+| lineWeight | 2 | The weight(width) of measuring line. Option from `L.Polyline` |
+| lineDashArray | '6, 6' | The dash array of measuring line. Option from `L.Polyline` |
+| lineOpacity | 1 | The opacity of measuring line. Option from `L.Polyline` |
 
 ## Todo
 - control tooltip text customize
 - measure data
 - measure event
 - add start point indicator
+- change `activeKeyCode` into `toggleKeyCode`
