@@ -25,7 +25,7 @@ L.Control.Measure = L.Control.extend({
   onAdd: function (map) {
     var className = 'leaflet-control-zoom leaflet-bar leaflet-control'
     var container = L.DomUtil.create('div', className)
-    this._createButton('&#8674;', '测量',
+    this._createButton('&#8674;', 'Measure',
     'leaflet-control-measure leaflet-bar-part leaflet-bar-part-top-and-bottom',
     container, this._toggleMeasure, this)
 
@@ -55,6 +55,7 @@ L.Control.Measure = L.Control.extend({
       .on(link, 'dbclick', L.DomEvent.stopPropagation)
     return link
   },
+
   _toggleMeasure: function () {
     this._measuring = !this._measuring
     if (this._measuring) {
@@ -65,6 +66,7 @@ L.Control.Measure = L.Control.extend({
       this._stopMeasuring()
     }
   },
+
   _startMeasuring: function () {
     this._oldCursor = this._map._container.style.cursor
     this._map._container.style.cursor = 'crosshair'
@@ -85,6 +87,7 @@ L.Control.Measure = L.Control.extend({
       this._points = []
     }
   },
+
   _stopMeasuring: function () {
     this._map._container.style.cursor = this._oldCursor
 
@@ -102,6 +105,7 @@ L.Control.Measure = L.Control.extend({
 
     this._restartPath()
   },
+
   _mouseMove: function (e) {
     if (!e.latlng || !this._lastPoint) {
       return
@@ -143,7 +147,6 @@ L.Control.Measure = L.Control.extend({
       return
     }
 
-    //  有上一个点并且允许提示
     if (this._lastPoint && this._tooltip) {
       if (!this._distance) {
         this._distance = 0
@@ -158,9 +161,8 @@ L.Control.Measure = L.Control.extend({
 
     this._createTooltip(e.latlng)
 
-    //  main 线段图层 add to layerPaint
+    //  main layer add to layerPaint
     if (this._lastPoint && !this._layerPaintPath) {
-      // Todo: black
       this._layerPaintPath = L.polyline([this._lastPoint], {
         color: this.options.lineColor,
         weight: this.options.lineWeight,
@@ -245,7 +247,6 @@ L.Control.Measure = L.Control.extend({
   },
 
   _updateTooltipDistance: function (total, difference) {
-    //  if no '_icon', there's no need
     if (!this._tooltip._icon) {
       return
     }
@@ -276,7 +277,7 @@ L.Control.Measure = L.Control.extend({
         }
         break
       case this.options.cancelKeyCode:
-        //  if isMeasuring, cancel Measuring
+        //  if measuring, cancel measuring
         if (this._measuring) {
           if (!this._lastPoint) {
             this._toggleMeasure()

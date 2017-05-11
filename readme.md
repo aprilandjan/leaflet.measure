@@ -2,6 +2,8 @@
 
 > A [`Leaflet`](https://github.com/Leaflet/Leaflet) plugin to measure distance on map. This repository is based on [`jtreml/leaflet.measure`](https://github.com/jtreml/leaflet.measure), the origin repo seems not to be maintained anymore.
 
+> Supported with current latest `leaflet` `v1.0.3`.
+
 ## Example
 
 You can check the [example](http://aprilandjan.github.com/leaflet.measure/example.html) here.
@@ -44,5 +46,7 @@ L.control.measure({
 | lineOpacity | 1 | The opacity of measuring line. Option from L.Polyline |
 
 ## Todo
+- control tooltip text customize
 - measure data
 - measure event
+- add start point indicator
