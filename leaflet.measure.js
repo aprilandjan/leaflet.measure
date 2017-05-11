@@ -300,10 +300,7 @@ L.Map.mergeOptions({
 
 L.Map.addInitHook(function () {
   if (this.options.measureControl) {
-    this.measureControl = new L.Control.Measure({
-      position: 'topright',
-      keyboard: true
-    })
+    this.measureControl = new L.Control.Measure()
     this.addControl(this.measureControl)
   }
 })
