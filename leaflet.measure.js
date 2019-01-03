@@ -14,7 +14,9 @@ L.Control.Measure = L.Control.extend({
     //  line dash
     lineDashArray: '6, 6',
     //  line opacity
-    lineOpacity: 1
+    lineOpacity: 1,
+    //  format distance method
+    formatDistance: null,
   },
 
   initialize: function (options) {
@@ -261,6 +263,9 @@ L.Control.Measure = L.Control.extend({
   },
 
   _formatDistance: function (val) {
+    if (typeof this.options.formatDistance === 'function') {
+      return this.options.formatDistance(val);
+    }
     if (val < 1000) {
       return Math.round(val) + 'm'
     } else {

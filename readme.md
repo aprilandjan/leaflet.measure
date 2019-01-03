@@ -32,7 +32,7 @@ L.control.measure({
 
 ## Options
 
-The available options are listed below: 
+The available options are listed below: 
 
 | option | default | description |
 | ------| ------ | ------ |
@@ -44,6 +44,18 @@ L.control.measure({
 | lineWeight | 2 | The weight(width) of measuring line. Option from `L.Polyline` |
 | lineDashArray | '6, 6' | The dash array of measuring line. Option from `L.Polyline` |
 | lineOpacity | 1 | The opacity of measuring line. Option from `L.Polyline` |
+| formatDistance | ~ | The measure distance format method, defaultly output as `m` and `km` string. You can customize to any other distance unit(see example code below) |
+
+### set distance unit to miles
+
+```javascript
+ L.control.measure({
+    //  distance formatter, output mile instead of km 
+    formatDistance: function (val) {
+      return Math.round(1000 * val / 1609.344) / 1000 + 'mile';
+    }
+  }).addTo(map)
+```
 
 ## Todo
 - control tooltip text customize

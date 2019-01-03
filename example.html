@@ -32,7 +32,7 @@
         subdomains: ['1', '2', '3', '4']
       }).addTo(map)
 
-      L.control.measure({
+      var plugin = L.control.measure({
         //  control position
         position: 'topleft',
         //  weather to use keyboard control for this plugin
@@ -48,7 +48,11 @@
         //  line dash
         lineDashArray: '6, 6',
         //  line opacity
-        lineOpacity: 1
+        lineOpacity: 1,
+        //  distance formatter
+        // formatDistance: function (val) {
+        //   return Math.round(1000 * val / 1609.344) / 1000 + 'mile';
+        // }
       }).addTo(map)
     </script>
   </body>
