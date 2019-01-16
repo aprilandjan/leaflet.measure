@@ -17,6 +17,8 @@ L.Control.Measure = L.Control.extend({
     lineOpacity: 1,
     //  format distance method
     formatDistance: null,
+    //  define text color
+    textColor: 'black'
   },
 
   initialize: function (options) {
@@ -255,9 +257,9 @@ L.Control.Measure = L.Control.extend({
     var totalRound = this._formatDistance(total)
     var differenceRound = this._formatDistance(difference)
 
-    var text = '<div class="leaflet-measure-tooltip-total">' + totalRound + '</div>'
+    var text = '<div class="leaflet-measure-tooltip-total" style="color:'+ this.options.textColor +'">' + totalRound + '</div>'
     if (differenceRound > 0 && totalRound !== differenceRound) {
-      text += '<div class="leaflet-measure-tooltip-difference">(+' + differenceRound + ')</div>'
+      text += '<div class="leaflet-measure-tooltip-difference" style="color:'+ this.options.textColor +'">(+' + differenceRound + ')</div>'
     }
     this._tooltip._icon.innerHTML = text
   },
