@@ -121,7 +121,8 @@ L.Control.Measure = L.Control.extend({
         weight: this.options.lineWeight,
         opacity: this.options.lineOpacity,
         clickable: false,
-        dashArray: this.options.lineDashArray
+        dashArray: this.options.lineDashArray,
+        interactive: false
       }).addTo(this._layerPaint)
     } else {
       //  replace the current layer to the newest draw points
@@ -171,7 +172,8 @@ L.Control.Measure = L.Control.extend({
         color: this.options.lineColor,
         weight: this.options.lineWeight,
         opacity: this.options.lineOpacity,
-        clickable: false
+        clickable: false,
+        interactive: false
       }).addTo(this._layerPaint)
     }
 
