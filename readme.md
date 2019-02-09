@@ -2,7 +2,7 @@
 
 > A [`Leaflet`](https://github.com/Leaflet/Leaflet) plugin to measure distance on map. This repository is based on [`jtreml/leaflet.measure`](https://github.com/jtreml/leaflet.measure), the origin repo seems not to be maintained anymore.
 
-> Supported with current latest `leaflet` `v1.0.3`.
+> Supported with current latest `leaflet` `v1.x`.
 
 ## Example
 
@@ -32,7 +32,7 @@ L.control.measure({
 
 ## Options
 
-The available options are listed below: 
+The available options are listed below:
 
 | option | default | description |
 | ------| ------ | ------ |
@@ -44,13 +44,14 @@ The available options are listed below:
 | lineWeight | 2 | The weight(width) of measuring line. Option from `L.Polyline` |
 | lineDashArray | '6, 6' | The dash array of measuring line. Option from `L.Polyline` |
 | lineOpacity | 1 | The opacity of measuring line. Option from `L.Polyline` |
-| formatDistance | ~ | The measure distance format method, defaultly output as `m` and `km` string. You can customize to any other distance unit(see example code below) |
+| textColor | 'black' | The color of distance label. Can be set to any valid css color |
+| formatDistance | ~ | The measure distance format method, output as `m` and `km` string by default. You can customize to any other distance unit(see example code below) |
 
 ### set distance unit to miles
 
 ```javascript
  L.control.measure({
-    //  distance formatter, output mile instead of km 
+    //  distance formatter, output mile instead of km
     formatDistance: function (val) {
       return Math.round(1000 * val / 1609.344) / 1000 + 'mile';
     }
