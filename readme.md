@@ -57,10 +57,3 @@ The available options are listed below:
     }
   }).addTo(map)
 ```
-
-## Todo
-- control tooltip text customize
-- measure data
-- measure event
-- add start point indicator
-- change `activeKeyCode` into `toggleKeyCode`
