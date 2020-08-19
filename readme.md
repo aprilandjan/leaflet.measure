@@ -46,6 +46,7 @@ The available options are listed below:
 | lineOpacity | 1 | The opacity of measuring line. Option from `L.Polyline` |
 | textColor | 'black' | The color of distance label. Can be set to any valid css color |
 | formatDistance | ~ | The measure distance format method, output as `m` and `km` string by default. You can customize to any other distance unit(see example code below) |
+| disableOtherClicksWhileMeasuring | `false` | Disable other layer clicks while measuring. Note this is somehow tricky, see <https://github.com/aprilandjan/leaflet.measure/issues/8> |
 
 ### set distance unit to miles
 

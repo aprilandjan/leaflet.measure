@@ -53,7 +53,17 @@
         // formatDistance: function (val) {
         //   return Math.round(1000 * val / 1609.344) / 1000 + 'mile';
         // }
+        //  Disable other layer clicks while measuring. Note this is somehow tricky, see <https://github.com/aprilandjan/leaflet.measure/issues/8>
+        disableOtherClicksWhileMeasuring: true,
       }).addTo(map)
+
+      var circle = L.circle([22.536836, 113.951513], {
+          color: 'red',
+          fillColor: '#f03',
+          fillOpacity: 0.3,
+          radius: 3000
+      }).addTo(map).bindPopup('I am a circle with popup enabled. Click me while measuring!').openPopup();
+      const cacheClicks = [];
     </script>
   </body>
 </html>

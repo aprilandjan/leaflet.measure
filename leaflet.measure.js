@@ -18,7 +18,9 @@ L.Control.Measure = L.Control.extend({
     //  format distance method
     formatDistance: null,
     //  define text color
-    textColor: 'black'
+    textColor: 'black',
+    //  disable others click
+    disableOtherClicksWhileMeasuring: false,
   },
 
   initialize: function (options) {
@@ -71,6 +73,38 @@ L.Control.Measure = L.Control.extend({
     }
   },
 
+  //  the cached clicks for other layers
+  _cachedClicks: [],
+
+  //  try to remove click event handlers of other layers
+  _removeOtherLayersClicks: function (layer) {
+    if (layer === this._layerPaint) {
+      return;
+    }
+    var loop = function (childLayer) {
+      if (childLayer._events && childLayer._events.click) {
+        this._cachedClicks.push({
+          layer: childLayer,
+          click: childLayer._events.click,
+        });
+        childLayer._events.click = undefined;
+      }
+      if (childLayer.eachLayer) {
+        this._removeOtherLayersClicks(childLayer);
+      }
+    }.bind(this);
+    layer.eachLayer(loop);
+  },
+
+  //  try to bring back the click event handlers
+  _addOtherLayersClicks: function () {
+    this._cachedClicks.forEach(function (cached) {
+      var layer = cached.layer;
+      var click = cached.click;
+      layer._events.click = click;
+    });
+  },
+
   _startMeasuring: function () {
     this._oldCursor = this._map._container.style.cursor
     this._map._container.style.cursor = 'crosshair'
@@ -90,6 +124,10 @@ L.Control.Measure = L.Control.extend({
     if (!this._points) {
       this._points = []
     }
+
+    if (this.options.disableOtherClicksWhileMeasuring) {
+      this._removeOtherLayersClicks(this._map);
+    }
   },
 
   _stopMeasuring: function () {
@@ -108,6 +146,10 @@ L.Control.Measure = L.Control.extend({
     }
 
     this._restartPath()
+
+    if (this.options.disableOtherClicksWhileMeasuring) {
+      this._addOtherLayersClicks();
+    }
   },
 
   _mouseMove: function (e) {
